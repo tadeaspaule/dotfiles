@@ -1,0 +1,5 @@
+#!/bin/sh
+
+tmux new-session -s default -n w -d wtfutil
+tmux new-window zsh
+tmux -2 attach-session -d

@@ -1,0 +1,41 @@
+# -- feeds ---------------------------------------------------------------------
+
+auto-reload yes
+reload-time 120
+reload-threads 60
+download-retries 4
+download-timeout 10
+# prepopulate-query-feeds yes
+
+# -- navigation ----------------------------------------------------------------
+
+goto-next-feed no
+
+unbind-key ENTER
+unbind-key j
+unbind-key k
+unbind-key J
+unbind-key K
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key h quit
+
+# -- other keybinds ------------------------------------------------------------
+
+bind-key a toggle-article-read
+
+# -- bookmarks -----------------------------------------------------------------
+
+bind-key B bookmark
+bookmark-cmd ~/.config/newsboat/bookmark.sh
+# otherwise bookmark.sh doesn't add time_added properly
+bookmark-interactive yes
+
+# -- misc ----------------------------------------------------------------------
+
+unbind-key C feedlist
+confirm-exit no
+cleanup-on-quit no
+browser "firefox --new-tab %u"
+

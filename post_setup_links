@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# symlink tmux.conf (https://github.com/gpakosz/.tmux)
+if [ ! -f "$1/.tmux.conf" ]; then
+	ln -s "$1/.tmux/.tmux.conf" "$1/.tmux.conf"
+fi
+
+# add buku-utils symlinks
+for fn in bukuadd bukuaddquick
+do
+	if [ ! -f "$1/dev/tools/bin/$fn" ]; then
+		ln -s "$1/dev/tools/buku-utils/$fn" "$1/dev/tools/bin/$fn"
+	fi
+done
+
+# add executables from misc-execs folder
+for fn in $1/dev/tools/misc-execs/*; do
+	target="$1/dev/tools/bin/$(basename $fn)"
+	if [ ! -f $target ]; then
+		if [[ $(basename $fn) != "README.md" ]] && [[ $(basename $fn) != "LICENSE" ]]; then
+			ln -s "$1/dev/tools/misc-execs/$(basename $fn)" $target
+		fi
+	fi
+done
+

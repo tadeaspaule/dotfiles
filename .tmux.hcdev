@@ -1,0 +1,12 @@
+#!/bin/sh
+
+hcpath="$HOME/dev/hc-ggez"
+cd $hcpath
+tmux kill-session -t hcdev
+# Open all rust files in src/ folder
+# Then can navigate between them with :FzfWindows (<Leader>fw)
+tmux new-session -s hcdev -n n -d "nvim -p $(find -path "./src/*.rs" | tr '\n' ' ')"
+tmux new-window zsh
+tmux splitw -h -p 50
+# tmux send-keys "cd $hcpath && git status" C-m
+tmux -2 attach-session -d

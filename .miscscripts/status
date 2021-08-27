@@ -1,0 +1,13 @@
+#!/bin/bash
+
+printstat() {
+	printf "%10s" "$1 "
+	printf "%-12s" "$2"
+	echo ""
+}
+
+printstat "RAM" $(free | awk 'NR == 2 {printf("%.2f%\n"), $3/$2*100}')
+printstat "CPU" "$(printf "100 - $(mpstat | grep all | rev | cut -d ' ' -f 1 | rev)" | bc -l | tr -d '\n')%"
+printstat "TEMP" $($HOME/.config/i3blocks/temperature/temperature)
+printstat "/ free" $(df -h -P -l "/" | tr -s ' ' | cut -d ' ' -f 4 | sed -n 2p)
+

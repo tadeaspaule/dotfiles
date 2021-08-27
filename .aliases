@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# General
+alias n='nvim'
+alias untar='tar xzf'
+alias py='python3'
+
+# Git
+alias dotconfig='/usr/bin/git --git-dir=/mnt/ssd-shared/.dotfiles/ --work-tree="/mnt/ssd-shared"'
+alias dcs='dotconfig status'
+alias dcd='dotconfig diff'
+alias dca='dotconfig add'
+alias dcc='dotconfig commit -m'
+alias dcp='dotconfig push'
+# quick update dotconfig. git add -u only stages already tracked files
+alias dcup='dotconfig add -u && dotconfig commit -m "quick update" && dotconfig push'
+alias push='./push || git push'
+alias gs='git status'
+alias gc='git commit -m'
+alias gac='git add . && git commit -m'
+
+# Rust
+alias cr='WGPU_BACKEND=gl cargo run'
+alias cre='cr --example'
+alias cb='WGPU_BACKEND=gl cargo build'
+alias crv='cr --verbose'
+alias cbv='cb --verbose'
+
+# buku-related
+alias b='buku --suggest'
+alias ba='bukuadd'
+alias bq='bukuaddquick'
+alias bs='bukuadd "share"'
+
+# Misc
+alias w='cd $HOME/tools/vimwiki && nvim index.md'
+alias serve='./serve'
+alias psg='ps -a | grep'

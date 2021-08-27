@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ ! -d "$1/.local/share" ]; then
+	mkdir -p $1/.local/share
+fi
+
+if [ ! -d "$1/tools/bin" ]; then
+	mkdir $1/tools/bin
+fi
+
